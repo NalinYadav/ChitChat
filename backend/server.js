@@ -4,12 +4,18 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
-
+const cors = require("cors");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 dotenv.config();
 connectDB();
 const app = express();
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["https://chit-chat-ui.vercel.app"],
+    methods: ["POST", "PUT", "GET", "DELETE"],
+  })
+);
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
