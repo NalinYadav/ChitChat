@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://chit-chat-one.vercel.app/api/$1"
+    }
+  ]
+}
